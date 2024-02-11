@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import AdminDashboard from "./components/AdminDashboard";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import NotFound from "./components/NotFound";
+import Users from "./components/Users";
+import ManageSubs from "./components/ManageSubs";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex h-screen">
+      <Router>
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<AdminDashboard />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/manage-subscription" element={<ManageSubs />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
