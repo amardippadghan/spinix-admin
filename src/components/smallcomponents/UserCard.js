@@ -5,6 +5,27 @@ const UserCard = ({ user, handleDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState({ ...user });
 
+  const AllotSub = async () => {
+    if (
+      window.confirm(
+        `are you sure you want to allot Subcription for ${user.name}`
+      )
+    ) {
+      try {
+        const response = await axios.post(
+          `http://localhost:3000/api/auth/license/${user._id}`
+        );
+
+        console.log("Subscription request approved:", response.data);
+        if (response.status === 200)
+          alert("Subscription request approved successfully");
+        else alert("Something went wrong");
+      } catch (error) {
+        console.error("Error approving subscription request:", error);
+      }
+    }
+  };
+
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -16,7 +37,7 @@ const UserCard = ({ user, handleDelete }) => {
 
   const handleSaveEdit = async () => {
     setIsEditing(false);
-    // Call a function to handle saving the edited user data
+
     if (window.confirm("Are you sure you want to edit this user?")) {
       try {
         const res = await axios.patch(
@@ -92,7 +113,10 @@ const UserCard = ({ user, handleDelete }) => {
               <span className="absolute top-0 right-0 bg-blue-500 text-white px-2 py-1 rounded-full text-xs">
                 Free User
               </span>
-              <button className="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 rounded-full text-xs">
+              <button
+                onClick={AllotSub}
+                className="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 rounded-full text-xs"
+              >
                 Subscribe
               </button>
             </div>
