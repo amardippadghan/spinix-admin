@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 import NotFound from "./components/NotFound";
 import Users from "./components/Users";
 import ManageSubs from "./components/ManageSubs";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Router>
         <Sidebar />
         <Routes>
-          <Route path="/" element={<AdminDashboard />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path="/manage-subscription" element={<ManageSubs />} />
           <Route path="*" element={<NotFound />} />

@@ -6,6 +6,7 @@ const UserCard = ({ user, handleDelete }) => {
   const [editedUser, setEditedUser] = useState({ ...user });
 
   const AllotSub = async () => {
+    const token = localStorage.getItem("token");
     if (
       window.confirm(
         `are you sure you want to allot Subcription for ${user.name}`
@@ -13,7 +14,12 @@ const UserCard = ({ user, handleDelete }) => {
     ) {
       try {
         const response = await axios.post(
-          `http://localhost:3000/api/auth/license/${user._id}`
+          `http://localhost:3000/api/auth/license/${user._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
 
         console.log("Subscription request approved:", response.data);
@@ -40,9 +46,15 @@ const UserCard = ({ user, handleDelete }) => {
 
     if (window.confirm("Are you sure you want to edit this user?")) {
       try {
+        const token = localStorage.getItem("token");
         const res = await axios.patch(
           `http://localhost:3000/api/auth/user/${user._id}`,
-          editedUser
+          editedUser,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         console.log(res);
         alert("User updated successfully");

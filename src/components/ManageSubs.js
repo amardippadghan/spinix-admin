@@ -10,7 +10,12 @@ function ManageSubs() {
 
   const fetchSubscriptionRequests = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/request");
+      const token = localStorage.getItem("token");
+      const response = await axios.get("http://localhost:3000/api/request", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setSubscriptionRequests(response.data.data);
     } catch (error) {
       console.error("Error fetching subscription requests:", error);
@@ -19,8 +24,14 @@ function ManageSubs() {
 
   const handleApprove = async (userId) => {
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.post(
-        `http://localhost:3000/api/auth/license/${userId}`
+        `http://localhost:3000/api/auth/license/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       console.log("Subscription request approved:", response.data);
