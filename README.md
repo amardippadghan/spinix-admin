@@ -1,3 +1,6 @@
+first start backend at localhost:3000 then run this application 
+, in terminal we already running backend at 3000 thats why this application should have been run on 3001
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
