@@ -14,7 +14,7 @@ const UserCard = ({ user, handleDelete }) => {
     ) {
       try {
         const response = await axios.post(
-          `http://localhost:3000/api/auth/license/${user._id}`,
+          `https://sphinix-backend.onrender.com/api/auth/license/${user._id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ const UserCard = ({ user, handleDelete }) => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.patch(
-          `http://localhost:3000/api/auth/user/${user._id}`,
+          `https://sphinix-backend.onrender.com/api/auth/user/${user._id}`,
           editedUser,
           {
             headers: {

@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/admin/login",
+        "https://sphinix-backend.onrender.com/api/admin/login",
         { username, password },
         {
           headers: {

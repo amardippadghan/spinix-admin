@@ -12,11 +12,14 @@ const Users = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:3000/api/auth/users", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://sphinix-backend.onrender.com/api/auth/users",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setUsers(response.data.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -27,7 +30,7 @@ const Users = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.delete(
-          `http://localhost:3000/api/auth/user/${userId}`,
+          `https://sphinix-backend.onrender.com/api/auth/user/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

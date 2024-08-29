@@ -6,6 +6,8 @@ import NotFound from "./components/NotFound";
 import Users from "./components/Users";
 import ManageSubs from "./components/ManageSubs";
 import Login from "./components/Login";
+import CreateTask from "./components/CreateTask";
+import HomePage from "./components/ViewTask";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path="/manage-subscription" element={<ManageSubs />} />
+          <Route path="/create-task" element={<CreateTask/>}/>
+          <Route path="/view-task" element={<HomePage/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

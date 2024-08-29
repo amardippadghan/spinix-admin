@@ -10,6 +10,8 @@ const Sidebar = () => {
       <nav className="flex flex-col mt-5">
         <SidebarLink to="/users" text="Users" />
         <SidebarLink to="/manage-subscription" text="Manage Subscription" />
+        <SidebarLink to="/create-task" text="Create Task" />
+        <SidebarLink to="/view-task" text="View Task" />
       </nav>
     </div>
   );

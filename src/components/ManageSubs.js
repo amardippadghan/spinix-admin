@@ -11,11 +11,14 @@ function ManageSubs() {
   const fetchSubscriptionRequests = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:3000/api/request", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://sphinix-backend.onrender.com/api/request",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setSubscriptionRequests(response.data.data);
     } catch (error) {
       console.error("Error fetching subscription requests:", error);
@@ -26,7 +29,7 @@ function ManageSubs() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        `http://localhost:3000/api/auth/license/${userId}`,
+        `https://sphinix-backend.onrender.com/api/auth/license/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
